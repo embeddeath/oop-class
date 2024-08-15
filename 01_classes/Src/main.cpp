@@ -10,7 +10,8 @@
 ************************************************************/
 #include <iostream>
 #include <string>
-#include "Person.hpp"
+#include "person.hpp"
+#include "car.hpp"
 
 /***********************************************************
     Type Definitions
@@ -53,8 +54,8 @@ int main (int argc, char* argv[])
     Miguel.setYearOfBirth(2002); 
     Miguel.setNationality(Person::Nationality::MEXICAN);
     Miguel.setOccupation(Person::Occupation::EMPLOYED); 
-    Miguel.setPhoneNumber("3326624029");
-    Miguel.setEmail("marquezhdezmiguel@gmail.com");
+    Miguel.setPhoneNumber("3326624039");
+    Miguel.setEmail("marquezhdezmiguel12@gmail.com");
     Miguel.setDisabilityStatus(false);
     Miguel.setDescription("Borracho pero buen muchacho");
 
@@ -79,5 +80,23 @@ int main (int argc, char* argv[])
     Diego.printInfo();
 
 
+    
+    Car car1;
+    car1.setModelName("Mazda3");
+    car1.setModelYear(2016);
+    car1.setOwnerName("Miguel"); 
+    car1.setColor("White");
+    car1.setBodyStyle("Sedan");
+    car1.setVin("13214123412");
+    car1.setTransmissionType("Auto 6SPD");
+    car1.setEngineType("Gasoline");
+    car1.setCylinderNumber(4);
+    car1.setCylinderVolume(2000); 
+    car1.setMaxSpeed(260); 
+    car1.setHorsepower(140); 
+    car1.setNumberOfDoors(4); 
+    car1.setRimSize(17);  
+
+    car1.printCarData(); 
     return 0; 
 }
