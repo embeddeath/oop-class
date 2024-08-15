@@ -1,0 +1,1 @@
+1. Es esta la manera correcta de separar declaración y definición de una clase entre source y header file? https://stackoverflow.com/questions/9579930/how-to-separate-a-class-and-its-member-functions-into-header-and-source-files
