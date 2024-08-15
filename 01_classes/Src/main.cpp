@@ -12,7 +12,7 @@
 #include <string>
 #include "person.hpp"
 #include "car.hpp"
-
+#include "animal.hpp"
 /***********************************************************
     Type Definitions
 ************************************************************/
@@ -98,5 +98,18 @@ int main (int argc, char* argv[])
     car1.setRimSize(17);  
 
     car1.printCarData(); 
+
+
+    Animal animal1; 
+
+    animal1.setName("Max"); 
+    animal1.setSpecies("Lion"); 
+    animal1.setScientificName("Panthera Leo");
+    animal1.setAlimentType("Carnivore"); 
+    animal1.setColor("Yellow"); 
+    animal1.setUniqueId(12);
+
+    animal1.printData(); 
+    
     return 0; 
 }

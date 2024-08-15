@@ -33,6 +33,7 @@
 class Person
 {
     public:
+        /* To ensure input type safety?? */
         enum class Gender {MALE, FEMALE};
         enum class SkinColor {WHITE, BLACK, YELLOW, BROWN}; 
         enum class HairColor {BROWN, BLACK, BLONDE, GREY, WHITE}; 
@@ -40,7 +41,7 @@ class Person
         enum class Occupation {UNEMPLOYED, EMPLOYED, SELFEMPLOYED}; 
 
 
-        // Person();
+        // Constructor Person();
 
         void setGender(Gender gender); 
         Gender getGender(void);
