@@ -23,13 +23,15 @@ set(CMAKE_EXE_LINKER_FLAGS "-W")
 add_executable(${CMAKE_PROJECT_NAME})
 
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    Src/main.cpp
-    Src/InputManager.cpp
+    Src/main.cpp 
+    Src/Key.cpp 
+    Src/Entity.cpp
 )
 
 
 # Include the header files directory
 include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     Inc/
+
 )
 

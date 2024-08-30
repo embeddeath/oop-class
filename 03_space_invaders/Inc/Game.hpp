@@ -17,7 +17,7 @@
 /***********************************************************
     Macro Definitions
 ************************************************************/
-
+#define MAX_NUMBER_OF_ENTITIES  30
 /***********************************************************
     External Interface Function Declarations
 ************************************************************/
@@ -32,14 +32,17 @@
 ************************************************************/
 class Game
 {
-    public:
+    public: 
         Game(); 
-        void run(); 
-        void processInput();  
+        void run();
+        void addEntityToRenderer(Entity entityToRender);
 
     private: 
+        void render();
 
-}
+        /* Temporary fixed size array to store entities*/
+        Entity* entities[MAX_NUMBER_OF_ENTITIES]; 
+}; 
 /***********************************************************
     Function Definitions
 ************************************************************/
