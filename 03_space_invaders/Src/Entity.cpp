@@ -33,6 +33,7 @@
 ************************************************************/
 
 void gotoxy(COORD coord) {
+    
     // Get the console handle (STD_OUTPUT_HANDLE is the default console)
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
@@ -139,6 +140,62 @@ void Ball::draw()
 {
 
 }
+
+Border::Border(COORD initialPosition, Square screenBounds) : Entity(initialPosition, screenBounds)
+{
+    
+    borderSize = screenBounds;
+    currentPosition = initialPosition;    
+
+    //std::cout << "bordersize height: " << borderSize.height << std::endl;
+}
+
+void Border::draw()
+{
+    COORD currentPosition_temp = currentPosition;
+
+    /* Draw upper side */
+    gotoxy(currentPosition_temp);
+    
+    for(int i = 0; i < borderSize.length; i++ ) /* Substracting one to account for first element*/
+    {
+        std::cout << '*'; 
+    }
+
+    /* Draw left side. */
+    for(int i = 0; i < borderSize.height; i++ )
+    {
+        gotoxy(currentPosition_temp); 
+        currentPosition_temp.Y++; 
+        std::cout << '*';
+    }
+    
+    /* Position cursor on lower left corner*/
+    currentPosition_temp = currentPosition;
+    currentPosition_temp.Y = (currentPosition_temp.Y + (short)borderSize.height - 1);
+
+    gotoxy(currentPosition_temp); 
+
+    /* Draw low side */ 
+    for(int i = 0; i < borderSize.length; i++ )
+    {
+        std::cout << '*'; 
+    }
+
+    /* Position cursor on upper right corner*/
+    currentPosition_temp = currentPosition;
+    currentPosition_temp.X += borderSize.length - 1; 
+    
+    /* Draw right side. */
+    for(int i = 0; i < borderSize.height; i++ )
+    {
+        gotoxy(currentPosition_temp); 
+        currentPosition_temp.Y++; 
+        std::cout << '*';
+    }
+
+}
+
 
 
 

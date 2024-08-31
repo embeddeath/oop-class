@@ -6,13 +6,15 @@
 
 #define FRAMES_PER_SECOND 30
 
+
+
 int main()
 {   
-    COORD initialPaddleCoord = {0, 0};
-    Square screen = {100, 100};  
+    COORD initialPaddleCoord = {2, 2};
+    Square screen = {100, 30};  
 
     Paddle myPaddle(initialPaddleCoord, screen, 3); 
-    initialPaddleCoord = {30, 0}; 
+    initialPaddleCoord = {97, 2}; 
     Paddle enemyPaddle(initialPaddleCoord, screen, 3); 
 
     Key keyA('A'), keyD('D'); 
@@ -20,6 +22,10 @@ int main()
 
 
     system("cls"); 
+
+    Border myBorder({0,0}, screen); 
+
+    myBorder.draw(); 
 
     while (1)
     {
@@ -45,15 +51,9 @@ int main()
 
         myPaddle.draw();
         enemyPaddle.draw(); 
-        // COORD pos; 
 
-        // pos = myPaddle.getPreviousPosition(); 
-        // std::cout << "Square previous x: " << pos.X << ", y: " << pos.Y << std::endl; 
 
-        // pos = myPaddle.getCurrentPosition(); 
-        // std::cout << "Square current x: " << pos.X << ", y: " << pos.Y << std::endl;    
-
-        // system("cls"); 
+        //system("cls"); 
         
     }
 }

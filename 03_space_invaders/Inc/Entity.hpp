@@ -92,6 +92,17 @@ class Ball : public Entity
         int direction;
 }; 
 
+class Border : public Entity
+{
+    public: 
+        Border(COORD initialPosition, Square size); 
+        void draw() override; 
+    private:
+        Square borderSize; 
+}; 
+
+
+
 
 /***********************************************************
     Function Definitions
