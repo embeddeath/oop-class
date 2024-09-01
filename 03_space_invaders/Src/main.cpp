@@ -7,11 +7,16 @@
 
 #define FRAMES_PER_SECOND 30
 
+#define BORDER_ORIGIN_X     2
+#define BORDER_ORIGIN_Y     2
+#define BORDER_LENGTH       100
+#define BORDER_HEIGHT       30
+
 int main()
 {   
 
     /* Initialize Border*/
-    Border myBorder({2,2}, {100, 30}); 
+    Border myBorder({BORDER_ORIGIN_X, BORDER_ORIGIN_Y}, BORDER_LENGTH, BORDER_HEIGHT); 
 
     Paddle myPaddle({2, 2}, myBorder, 3); 
     Paddle enemyPaddle({97, 2}, myBorder, 3); 

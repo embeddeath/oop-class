@@ -9,7 +9,7 @@
 /***********************************************************
     Includes
 ************************************************************/
-#include "Entity.hpp"
+
 /***********************************************************
     Type Definitions
 ************************************************************/
@@ -31,13 +31,16 @@
     Class Declarations and Definitions
 ************************************************************/
 
-class Border : public Entity
+class Border
 {
     public: 
-        Border(COORD initialPosition, Square s); 
-        void draw() override; 
+        Border(COORD origin, int length, int height); 
+        void draw();
     private:
-        Square size;
+        int length; 
+        int height; 
+
+        COORD origin; 
         
         COORD upperRightCorner; 
         COORD upperLeftCorner; 

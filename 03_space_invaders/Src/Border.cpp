@@ -32,39 +32,40 @@
 ************************************************************/
 
 
-Border::Border(COORD initialPosition, Square s) : Entity(initialPosition, s)
+Border::Border(COORD origin, int length, int height)
 {
     
-    size = s;
-    currentPosition = initialPosition;
+    this->length = length;
+    this->height = height; 
+    this->origin = origin;
     computeCorners();  
     computeLimits();
     
 
-    //std::cout << "bordersize height: " << borderSize.height << std::endl;
+
 }
 
 void Border::computeCorners()
 {
-    upperLeftCorner = currentPosition; 
+    upperLeftCorner = origin; 
 
-    upperRightCorner.Y = currentPosition.Y; 
-    upperRightCorner.X = currentPosition.X + size.length - 1; 
+    upperRightCorner.Y = origin.Y; 
+    upperRightCorner.X = origin.X + length - 1; 
 
-    lowerLeftCorner.Y = currentPosition.Y + size.height - 1; 
-    lowerLeftCorner.X = currentPosition.X; 
+    lowerLeftCorner.Y = origin.Y + height - 1; 
+    lowerLeftCorner.X = origin.X; 
 
-    lowerRightCorner.Y = currentPosition.Y + size.height - 1; 
-    lowerRightCorner.X = currentPosition.X + size.length - 1; 
+    lowerRightCorner.Y = origin.Y + height - 1; 
+    lowerRightCorner.X = origin.X + length - 1; 
     
 
 }
 void Border::computeLimits()
 {
-    upLimit = currentPosition.Y; 
-    lowLimit = currentPosition.Y + size.height - 1;
-    leftLimit = currentPosition.X; 
-    rightLimit = currentPosition.X + size.length -1; 
+    upLimit = origin.Y; 
+    lowLimit = origin.Y + height - 1;
+    leftLimit = origin.X; 
+    rightLimit = origin.X + length -1; 
 }
 
 
