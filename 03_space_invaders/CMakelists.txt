@@ -28,6 +28,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Src/Entity.cpp
     Src/Paddle.cpp
     Src/Border.cpp
+    Src/Common.cpp
 )
 
 

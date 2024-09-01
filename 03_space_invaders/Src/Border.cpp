@@ -10,6 +10,8 @@
     Includes
 ************************************************************/
 #include "Border.hpp"
+#include "Common.hpp"
+#include <iostream>
 
 /***********************************************************
     Type Definitions
@@ -31,7 +33,6 @@
     Class Declarations and Definitions
 ************************************************************/
 
-
 Border::Border(COORD origin, int length, int height)
 {
     
@@ -40,9 +41,6 @@ Border::Border(COORD origin, int length, int height)
     this->origin = origin;
     computeCorners();  
     computeLimits();
-    
-
-
 }
 
 void Border::computeCorners()
@@ -96,13 +94,11 @@ void Border::drawHorizontalLine(COORD start, COORD end)
 
 void Border::draw()
 {
-
     drawVerticalLine(upperLeftCorner, lowerLeftCorner); 
     drawVerticalLine(upperRightCorner, lowerRightCorner); 
 
     drawHorizontalLine(upperLeftCorner, upperRightCorner); 
     drawHorizontalLine(lowerLeftCorner, lowerRightCorner); 
-
 }
 
 

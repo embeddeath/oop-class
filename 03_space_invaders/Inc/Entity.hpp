@@ -10,7 +10,7 @@
     Includes
 ************************************************************/
 #include <iostream>
-#include <windows.h>
+#include "Common.hpp"
 
 /***********************************************************
     Type Definitions

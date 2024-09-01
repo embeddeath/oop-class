@@ -1,17 +1,16 @@
+#pragma once
 /***********************************************************
-    File: Game.cpp
-    Description: Game class.
+    File: Common.hpp
+    Description: Functions shared between classes. 
     Author: Miguel Márquez
-    Date: 8/29/2024
+    Date: 9/1/2024
 
 ************************************************************/
-
 /***********************************************************
     Includes
 ************************************************************/
-#include "Entity.hpp"
-#include <iostream>
-#include <exception>
+#include "windows.h"
+
 /***********************************************************
     Type Definitions
 ************************************************************/
@@ -21,8 +20,9 @@
 ************************************************************/
 
 /***********************************************************
-    Unit-Internal Function Declarations
+    External Interface Function Declarations
 ************************************************************/
+
 
 /***********************************************************
     Global Variable Definitions
@@ -33,54 +33,7 @@
 ************************************************************/
 
 
-
-Entity::Entity(COORD initialPosition, Square screenBounds)
-{
-
-
-}
-
-COORD Entity::getCurrentPosition()
-{
-    return currentPosition; 
-}
-
-COORD Entity::getPreviousPosition()
-{
-    return previousPosition; 
-}
-
-
-Ball::Ball(COORD initialPosition, Square screenBounds) : Entity(initialPosition, screenBounds)
-{
-    
-}
-
-void Ball::collide()
-{
-    /* Logic to update speed */
-    speed = speed; 
-
-    /* Logic to update direction */
-    direction = direction; 
-}
-
-void Ball::calculatePosition()
-{
-    /* Logic to calculate COORD*/
-    currentPosition.X = currentPosition.X; 
-    currentPosition.Y = currentPosition.Y; 
-}
-
-void Ball::draw()
-{
-
-}
-
-
-
-
-
 /***********************************************************
     Function Definitions
 ************************************************************/
+extern void gotoxy(COORD coord); 
