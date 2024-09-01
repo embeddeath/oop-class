@@ -1,21 +1,20 @@
 #include <iostream>
 #include <stdlib.h>
 #include "entity.hpp"
+#include "Border.hpp"
+#include "Paddle.hpp"
 #include "key.hpp"
-
 
 #define FRAMES_PER_SECOND 30
 
-
-
 int main()
 {   
-    COORD initialPaddleCoord = {2, 2};
-    Square screen = {100, 30};  
 
-    Paddle myPaddle(initialPaddleCoord, screen, 3); 
-    initialPaddleCoord = {97, 2}; 
-    Paddle enemyPaddle(initialPaddleCoord, screen, 3); 
+    /* Initialize Border*/
+    Border myBorder({2,2}, {100, 30}); 
+
+    Paddle myPaddle({2, 2}, myBorder, 3); 
+    Paddle enemyPaddle({97, 2}, myBorder, 3); 
 
     Key keyA('A'), keyD('D'); 
     Key keyUp(VK_UP), keyDown(VK_DOWN); 
@@ -23,7 +22,7 @@ int main()
 
     system("cls"); 
 
-    Border myBorder({0,0}, screen); 
+    
 
     myBorder.draw(); 
 
@@ -49,8 +48,8 @@ int main()
             enemyPaddle.moveDown(); 
         }
 
-        myPaddle.draw();
-        enemyPaddle.draw(); 
+        // myPaddle.draw();
+        // enemyPaddle.draw(); 
 
 
         //system("cls"); 

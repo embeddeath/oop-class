@@ -1,17 +1,17 @@
+#pragma once
 /***********************************************************
-    File: Game.cpp
-    Description: Game class.
+    File: Paddle.hpp
+    Description: Paddle class. 
     Author: Miguel Márquez
-    Date: 8/29/2024
+    Date: 9/1/2024
 
 ************************************************************/
-
 /***********************************************************
     Includes
 ************************************************************/
 #include "Entity.hpp"
-#include <iostream>
-#include <exception>
+#include "Border.hpp"
+
 /***********************************************************
     Type Definitions
 ************************************************************/
@@ -21,8 +21,9 @@
 ************************************************************/
 
 /***********************************************************
-    Unit-Internal Function Declarations
+    External Interface Function Declarations
 ************************************************************/
+
 
 /***********************************************************
     Global Variable Definitions
@@ -32,55 +33,20 @@
     Class Declarations and Definitions
 ************************************************************/
 
-void gotoxy(COORD coord) {
-    
-    // Get the console handle (STD_OUTPUT_HANDLE is the default console)
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-}
-
-Entity::Entity(COORD initialPosition, Square screenBounds)
+class Paddle : public Entity
 {
+    public:
+        Paddle(COORD COORD, Border border, int length); 
+        void moveUp();
+        void moveDown(); 
+        void draw() override; 
+
+    private: 
+        int length;
+};
 
 
-}
-
-COORD Entity::getCurrentPosition()
-{
-    return currentPosition; 
-}
-
-COORD Entity::getPreviousPosition()
-{
-    return previousPosition; 
-}
-
-
-Ball::Ball(COORD initialPosition, Square screenBounds) : Entity(initialPosition, screenBounds)
-{
-    
-}
-
-void Ball::collide()
-{
-    /* Logic to update speed */
-    speed = speed; 
-
-    /* Logic to update direction */
-    direction = direction; 
-}
-
-void Ball::calculatePosition()
-{
-    /* Logic to calculate COORD*/
-    currentPosition.X = currentPosition.X; 
-    currentPosition.Y = currentPosition.Y; 
-}
-
-void Ball::draw()
-{
-
-}
-
+ 
 
 
 

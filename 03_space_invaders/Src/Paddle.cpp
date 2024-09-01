@@ -1,17 +1,16 @@
 /***********************************************************
-    File: Game.cpp
-    Description: Game class.
+    File: Paddle.cpp
+    Description: Paddle class.
     Author: Miguel Márquez
-    Date: 8/29/2024
+    Date: 9/1/2024
 
 ************************************************************/
 
 /***********************************************************
     Includes
 ************************************************************/
-#include "Entity.hpp"
-#include <iostream>
-#include <exception>
+#include "Paddle.hpp"
+
 /***********************************************************
     Type Definitions
 ************************************************************/
@@ -32,54 +31,57 @@
     Class Declarations and Definitions
 ************************************************************/
 
-void gotoxy(COORD coord) {
-    
-    // Get the console handle (STD_OUTPUT_HANDLE is the default console)
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+Paddle::Paddle(COORD COORD, Border border, int length) : Entity(COORD, screenBounds)
+{
+    this->length = length; 
 }
 
-Entity::Entity(COORD initialPosition, Square screenBounds)
+void Paddle::moveUp()
 {
 
-
+    previousPosition.Y = currentPosition.Y; 
+    currentPosition.Y--;
+    renderPendingFlag = true; 
 }
 
-COORD Entity::getCurrentPosition()
+void Paddle::moveDown()
 {
-    return currentPosition; 
+    previousPosition.Y = currentPosition.Y; 
+    currentPosition.Y++;
+    renderPendingFlag = true;  
 }
 
-COORD Entity::getPreviousPosition()
+void Paddle::draw() 
 {
-    return previousPosition; 
+    COORD coordinate; 
+
+    if (true == renderPendingFlag)
+    {
+        /* First delete previous object in screen*/
+        for (int i = previousPosition.Y; i <= previousPosition.Y+length; i++)
+        {
+            coordinate.Y = i; 
+            coordinate.X = previousPosition.X; 
+            gotoxy(coordinate); 
+            std::cout << ' '; 
+        }
+
+        /* Now draw current object in screen*/
+        for (int i = currentPosition.Y; i <= currentPosition.Y+length; i++)
+        {
+            coordinate.Y = i; 
+            coordinate.X = currentPosition.X; 
+            gotoxy(coordinate); 
+            std::cout << '#'; 
+        }
+
+        renderPendingFlag = false; 
+    }
+
+
 }
 
 
-Ball::Ball(COORD initialPosition, Square screenBounds) : Entity(initialPosition, screenBounds)
-{
-    
-}
-
-void Ball::collide()
-{
-    /* Logic to update speed */
-    speed = speed; 
-
-    /* Logic to update direction */
-    direction = direction; 
-}
-
-void Ball::calculatePosition()
-{
-    /* Logic to calculate COORD*/
-    currentPosition.X = currentPosition.X; 
-    currentPosition.Y = currentPosition.Y; 
-}
-
-void Ball::draw()
-{
-
-}
 
 
 

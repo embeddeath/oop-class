@@ -11,9 +11,15 @@
 ************************************************************/
 #include <iostream>
 #include <windows.h>
+
 /***********************************************************
     Type Definitions
 ************************************************************/
+typedef struct Square
+{
+    int length; 
+    int height; 
+}; 
 
 /***********************************************************
     Macro Definitions
@@ -32,13 +38,6 @@
     Class Declarations and Definitions
 ************************************************************/
 
-
-typedef struct Square
-{
-    int length; 
-    int height; 
-}; 
-
 class Entity 
 {
     public:
@@ -53,19 +52,6 @@ class Entity
         Square screenBounds;
         bool renderPendingFlag; 
 }; 
-
-
-class Paddle : public Entity
-{
-    public:
-        Paddle(COORD COORD, Square screenBounds, int length); 
-        void moveUp();
-        void moveDown(); 
-        void draw() override; 
-
-    private: 
-        int length;
-};
 
 enum class Direction
 {
@@ -92,18 +78,8 @@ class Ball : public Entity
         int direction;
 }; 
 
-class Border : public Entity
-{
-    public: 
-        Border(COORD initialPosition, Square size); 
-        void draw() override; 
-    private:
-        Square borderSize; 
-}; 
-
-
-
 
 /***********************************************************
     Function Definitions
 ************************************************************/
+extern void gotoxy(COORD coord); 
