@@ -89,6 +89,10 @@ void Paddle::draw()
 
 }
 
+int Paddle::getLength()
+{
+    return length; 
+}
 
 
 

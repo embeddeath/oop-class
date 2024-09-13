@@ -40,6 +40,7 @@ class Paddle : public Entity
         void moveUp();
         void moveDown(); 
         void draw() override; 
+        int getLength(); 
 
     private: 
         int length;

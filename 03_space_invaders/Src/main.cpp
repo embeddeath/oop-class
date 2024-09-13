@@ -20,8 +20,8 @@ int main()
     //Paddle myPaddle({2, 2}, myBorder, 3); 
     //Paddle enemyPaddle({97, 2}, myBorder, 3); 
 
-    Paddle leftPaddle({BORDER_ORIGIN_X + PADDLE_X_OFFSET , PADDLE_Y_START_LOCATION}, myBorder, 3); 
-    Paddle rightPaddle({BORDER_LENGTH - PADDLE_X_OFFSET, PADDLE_Y_START_LOCATION}, myBorder, 3); 
+    Paddle leftPaddle({BORDER_ORIGIN_X + PADDLE_X_OFFSET , PADDLE_Y_START_LOCATION}, myBorder, 5); 
+    Paddle rightPaddle({BORDER_LENGTH - PADDLE_X_OFFSET, PADDLE_Y_START_LOCATION}, myBorder, 5); 
 
 
     Ball myBall( {20,20}, myBorder); 

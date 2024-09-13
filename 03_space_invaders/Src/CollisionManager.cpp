@@ -90,6 +90,58 @@ bool collisionManager::isBallCollidingBottomBorder()
     return false; 
 }
 
+
+
+bool collisionManager::isBallCollidingLeftPaddle()
+{
+    bool checkYColission = false; 
+
+    /* If ball is in line with the x position of the paddle*/
+    if (ballRef.getCurrentPosition().X - 1 == leftPaddleRef.getCurrentPosition().X ) 
+    { 
+        checkYColission = true; 
+    }
+
+    if (true == checkYColission)
+    {
+        for (int i = leftPaddleRef.getCurrentPosition().Y; i <= leftPaddleRef.getCurrentPosition().Y + leftPaddleRef.getLength(); i++)
+        {
+            if (ballRef.getCurrentPosition().Y == i )
+            {
+                return true; 
+            }   
+        }
+    }
+
+    return false; 
+}
+
+bool collisionManager::isBallCollidingRightPaddle()
+{
+    
+    bool checkYColission = false; 
+
+    /* If ball is in line with the x position of the paddle*/
+    if (ballRef.getCurrentPosition().X + 1 == rightPaddleRef.getCurrentPosition().X ) 
+    { 
+        checkYColission = true; 
+    }
+
+    if (true == checkYColission)
+    {
+        for (int i = rightPaddleRef.getCurrentPosition().Y; i <= rightPaddleRef.getCurrentPosition().Y + rightPaddleRef.getLength(); i++)
+        {
+            if (ballRef.getCurrentPosition().Y == i )
+            {
+                return true; 
+            }   
+        }
+    }
+
+
+    return false; 
+}
+
 void collisionManager::process()
 {
     if (isBallCollidingTopBorder())
@@ -108,8 +160,20 @@ void collisionManager::process()
     {
         ballRef.invertDirX(); 
     }
+    else if (isBallCollidingLeftPaddle())
+    {
+        ballRef.invertDirX(); 
+        ballRef.invertDirY(); 
+    }
+    else if (isBallCollidingRightPaddle())
+    {
+        ballRef.invertDirX(); 
+        ballRef.invertDirY();       
+    }
 
 }
+
+
 
 /***********************************************************
     Function Definitions
