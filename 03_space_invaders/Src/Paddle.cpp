@@ -31,14 +31,13 @@
     Class Declarations and Definitions
 ************************************************************/
 
-Paddle::Paddle(COORD COORD, Border myBorder, int length) : Entity(COORD, myBorder)
+Paddle::Paddle(COORD COORD, Border& b, int length) : Entity(COORD, b)
 {
     this->length = length; 
 }
 
 void Paddle::moveUp()
 {
-
     previousPosition.Y = currentPosition.Y; 
     currentPosition.Y--;
     renderPendingFlag = true; 

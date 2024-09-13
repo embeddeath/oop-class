@@ -41,7 +41,7 @@ typedef struct Square
 class Entity 
 {
     public:
-        Entity(COORD initialPosition, Border myBorder); 
+        Entity(COORD initialPosition, Border& b); 
         COORD getCurrentPosition();
         COORD getPreviousPosition(); 
         virtual void draw() = 0; /* Each derived class will have its own implementation of the draw method*/
@@ -50,7 +50,8 @@ class Entity
         COORD currentPosition;
         COORD previousPosition;   
         Square screenBounds;
-        bool renderPendingFlag; 
+        bool renderPendingFlag;
+        Border& borderRef;  
 }; 
 
 enum class Direction
@@ -68,7 +69,7 @@ enum class Direction
 class Ball : public Entity
 {
     public: 
-        Ball(COORD initialPosition, Border myBorder);
+        Ball(COORD initialPosition, Border& b);
         void collide();
         void calculatePosition();  
         void draw() override; 

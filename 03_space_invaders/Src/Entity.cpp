@@ -34,11 +34,10 @@
 
 
 
-Entity::Entity(COORD initialPosition, Border myBorder)
+Entity::Entity(COORD initialPosition, Border& b) : borderRef(b)
 {
     currentPosition = initialPosition;
     previousPosition = initialPosition;
-
 }
 
 COORD Entity::getCurrentPosition()
@@ -52,7 +51,7 @@ COORD Entity::getPreviousPosition()
 }
 
 
-Ball::Ball(COORD initialPosition, Border myBorder) : Entity(initialPosition, myBorder)
+Ball::Ball(COORD initialPosition, Border& b) : Entity(initialPosition, b)
 {
     
 }

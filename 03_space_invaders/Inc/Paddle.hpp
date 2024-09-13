@@ -36,7 +36,7 @@
 class Paddle : public Entity
 {
     public:
-        Paddle(COORD COORD, Border border, int length); 
+        Paddle(COORD COORD, Border& b, int length); 
         void moveUp();
         void moveDown(); 
         void draw() override; 
