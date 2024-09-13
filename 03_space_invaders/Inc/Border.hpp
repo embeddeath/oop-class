@@ -39,6 +39,9 @@ class Border
         void draw();
         int getUpLimit(); 
         int getLowLimit(); 
+        int getRightLimit(); 
+        int getLeftLimit(); 
+
     private:
         int length; 
         int height; 

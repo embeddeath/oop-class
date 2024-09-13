@@ -1,17 +1,20 @@
 /***********************************************************
-    File: Game.cpp
-    Description: Game class.
-    Author: Miguel Márquez
-    Date: 8/29/2024
+    File: InputManager.hpp
+    Description: The Key class provides a mechanism to detect
+    key presses. 
 
+    Author: Miguel Márquez
+    Date: 8/28/2024
 ************************************************************/
 
 /***********************************************************
     Includes
 ************************************************************/
 #include "Entity.hpp"
-#include <iostream>
-#include <exception>
+#include "Border.hpp"
+#include "Paddle.hpp"
+
+
 /***********************************************************
     Type Definitions
 ************************************************************/
@@ -32,91 +35,38 @@
     Class Declarations and Definitions
 ************************************************************/
 
-
-
-Entity::Entity(COORD initialPosition, Border& b) : borderRef(b)
+class collisionManager
 {
-    currentPosition = initialPosition;
-    previousPosition = initialPosition;
-    
-}
+    public: 
+        collisionManager(Border& _borderRef,
+                         Paddle& _leftPaddleRef, 
+                         Paddle& _rightPaddleRef,
+                         Ball& _ballRef);  
 
-COORD Entity::getCurrentPosition()
-{
-    return currentPosition; 
-}
+        void process(); 
+        
+    private: 
+        Border& borderRef; 
+        Paddle& leftPaddleRef; 
+        Paddle& rightPaddleRef; 
+        Ball& ballRef; 
 
-COORD Entity::getPreviousPosition()
-{
-    return previousPosition; 
-}
+        bool isBallCollidingRightPaddle();
+        bool isBallCollidingLeftPaddle(); 
+        bool isBallCollidingTopBorder(); 
+        bool isBallCollidingBottomBorder(); 
+        bool isBallCollidingLeftBorder(); 
+        bool isBallCollidingRightBorder(); 
 
 
-Ball::Ball(COORD initialPosition, Border& b) : Entity(initialPosition, b)
-{
-    dirX = 1; 
-    dirY = 1; 
-}
-
-void Ball::collide()
-{
-
-}
-
-void Ball::calculateDirection()
-{
-    
-}
-
-void Ball::calculatePosition()
-{
-    previousPosition = currentPosition; 
-    currentPosition.X += dirX;
-    currentPosition.Y += dirY;
-
-}
-
-void Ball::draw()
-{
-    gotoxy(previousPosition);
-    std::cout<<' ';
-    gotoxy(currentPosition);
-    std::cout<<'0';
-}
+}; 
 
 
 
-void Ball::setDirX(int _dir)
-{
-    dirX = _dir; 
-}
-
-void Ball::setDirY(int _dir)
-{
-    dirY = _dir; 
-}
-
-void Ball::invertDirX()
-{
-    dirX = -dirX; 
-}
-
-void Ball::invertDirY()
-{
-    dirY = -dirY;
-}
-
-int Ball::getDirX()
-{
-    return dirX; 
-}
-
-int Ball::getDirY()
-{
-    return dirY; 
-}
 
 
 /***********************************************************
     Function Definitions
 ************************************************************/
+
+

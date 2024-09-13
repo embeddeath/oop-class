@@ -6,6 +6,7 @@
 #include "key.hpp"
 #include "Common.hpp"
 #include "windows.h"
+#include "CollisionManager.hpp"
 
 
 
@@ -27,6 +28,7 @@ int main()
     Key keyA('A'), keyD('D'); 
     Key keyUp(VK_UP), keyDown(VK_DOWN); 
 
+    collisionManager myCollisionManager (myBorder, leftPaddle, rightPaddle, myBall); 
 
     system("cls"); 
     
@@ -42,48 +44,32 @@ int main()
         if (currentTick - startTick >= TICK_FREQUENCY)
         {
             startTick = currentTick; 
+
             /* Capture user input */
-            if (keyA.detectRisingEdge())
+            if (keyA.isPressed())
             {
                 leftPaddle.moveUp();
-                gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT + 2}); 
-                std::cout<< "                                                              ";
-                gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT + 2}); 
-                std::cout<< "BorderLowLimit = " << myBorder.getLowLimit() << " LeftPaddleCurrentPositionY = " << leftPaddle.getCurrentPosition().Y << std::endl;
             }
-            if (keyD.detectRisingEdge())
+            if (keyD.isPressed())
             {
                 leftPaddle.moveDown(); 
-
-                gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT + 2}); 
-                std::cout<< "                                                              ";
-                gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT + 2}); 
-                std::cout<< "BorderLowLimit = " << myBorder.getLowLimit() << " LeftPaddleCurrentPositionY = " << leftPaddle.getCurrentPosition().Y << std::endl; 
-
-    
             }
 
             /* Capture user input */
-            if (keyUp.detectRisingEdge())
+            if (keyUp.isPressed())
             {
                 rightPaddle.moveUp(); 
-                gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT +3}); 
-                std::cout<< "                                                              ";
-                gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT + 3}); 
-                std::cout<< "BorderLowLimit = " << myBorder.getLowLimit() << " RightPaddleCurrentPositionY = " << rightPaddle.getCurrentPosition().Y << std::endl; 
             }
-            if (keyDown.detectRisingEdge())
+            if (keyDown.isPressed())
             {
                 rightPaddle.moveDown(); 
-                gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT +3}); 
-                std::cout<< "                                                              ";
-                gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT + 3}); 
-                std::cout<< "BorderLowLimit = " << myBorder.getLowLimit() << " RightPaddleCurrentPositionY = " << rightPaddle.getCurrentPosition().Y << std::endl; 
             }
 
+            myCollisionManager.process(); 
+            myBall.calculatePosition(); 
             leftPaddle.draw();
             rightPaddle.draw();
-            myBall.calculatePosition(); 
+
             myBall.draw(); 
 
         }

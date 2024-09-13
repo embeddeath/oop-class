@@ -54,17 +54,6 @@ class Entity
         Border& borderRef;  
 }; 
 
-enum class Direction
-{
-    UP = 0, 
-    UP_RIGHT, 
-    RIGHT, 
-    DOWN_RIGHT,  
-    DOWN,
-    DOWN_LEFT, 
-    LEFT, 
-    UP_LEFT
-}; 
 
 class Ball : public Entity
 {
@@ -73,10 +62,20 @@ class Ball : public Entity
         void collide();
         void calculatePosition();  
         void draw() override; 
+        void calculateDirection();
+        void setDirX(int _dir); 
+        void setDirY(int _dir); 
+        void invertDirX(); 
+        void invertDirY(); 
+        int getDirX(); 
+        int getDirY(); 
+
 
     private: 
-        int speed;
-        int direction;
+        int dirX; 
+        int dirY; 
+
+
 }; 
 
 

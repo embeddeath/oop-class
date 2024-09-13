@@ -29,6 +29,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Src/Paddle.cpp
     Src/Border.cpp
     Src/Common.cpp
+    Src/CollisionManager.cpp
 )
 
 

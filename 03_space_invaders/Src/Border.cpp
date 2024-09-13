@@ -111,6 +111,17 @@ int Border::getUpLimit()
     return upLimit; 
 }
 
+int Border::getRightLimit()
+{
+    return rightLimit; 
+}
+
+int Border::getLeftLimit()
+{
+    return leftLimit; 
+}
+
+
 
 
 /***********************************************************

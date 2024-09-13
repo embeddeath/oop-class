@@ -21,7 +21,7 @@
     Macro Definitions
 ************************************************************/
 #define FRAMES_PER_SECOND 30
-#define TICK_FREQUENCY 1000/30
+#define TICK_FREQUENCY 1000/FRAMES_PER_SECOND
 
 #define BORDER_ORIGIN_X     2
 #define BORDER_ORIGIN_Y     2
