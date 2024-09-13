@@ -51,7 +51,12 @@ COORD Entity::getPreviousPosition()
     return previousPosition; 
 }
 
-
+void Entity::setPosition(COORD position)
+{
+    currentPosition = position; 
+    previousPosition = position; 
+    renderPendingFlag = true; 
+}
 Ball::Ball(COORD initialPosition, Border& b) : Entity(initialPosition, b)
 {
     dirX = 1; 
@@ -68,11 +73,14 @@ void Ball::calculateDirection()
     
 }
 
-void Ball::calculatePosition()
+void Ball::move()
 {
-    previousPosition = currentPosition; 
-    currentPosition.X += dirX;
-    currentPosition.Y += dirY;
+    if (true == motionAllowed)
+    {
+        previousPosition = currentPosition; 
+        currentPosition.X += dirX;
+        currentPosition.Y += dirY;
+    }
 
 }
 
@@ -116,7 +124,22 @@ int Ball::getDirY()
     return dirY; 
 }
 
+void Ball::allowMotion()
+{
+    motionAllowed = true; 
+}
 
+void Ball::preventMotion()
+{
+    motionAllowed = false; 
+}
+
+
+void Ball::erase()
+{
+    gotoxy(currentPosition);
+    std::cout<<'0';
+}
 /***********************************************************
     Function Definitions
 ************************************************************/

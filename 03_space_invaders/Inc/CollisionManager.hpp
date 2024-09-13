@@ -43,7 +43,11 @@ class collisionManager
                          Paddle& _rightPaddleRef,
                          Ball& _ballRef);  
 
-        void process(); 
+        void process();
+        bool leftPlayerScored(); 
+        bool rightPlayerScored(); 
+
+        
         
     private: 
         Border& borderRef; 
@@ -57,6 +61,12 @@ class collisionManager
         bool isBallCollidingBottomBorder(); 
         bool isBallCollidingLeftBorder(); 
         bool isBallCollidingRightBorder(); 
+
+        bool pointForLeft; 
+        bool pointForRight; 
+
+
+
 
 
 }; 

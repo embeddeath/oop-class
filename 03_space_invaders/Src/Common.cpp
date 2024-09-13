@@ -49,3 +49,13 @@ void printDebugData(std::string string, COORD printLocation)
     gotoxy(printLocation);
     std::cout << string << std::endl; 
 }
+
+void hideCursor() 
+{
+    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO cursorInfo;
+
+    GetConsoleCursorInfo(consoleHandle, &cursorInfo);  // Get current cursor information
+    cursorInfo.bVisible = false;                      // Set cursor visibility to false
+    SetConsoleCursorInfo(consoleHandle, &cursorInfo);  // Apply the changes
+}

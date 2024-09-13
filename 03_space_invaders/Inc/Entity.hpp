@@ -45,6 +45,8 @@ class Entity
         COORD getCurrentPosition();
         COORD getPreviousPosition(); 
         virtual void draw() = 0; /* Each derived class will have its own implementation of the draw method*/
+        virtual void erase() = 0; 
+        void setPosition(COORD position); 
 
     protected:
         COORD currentPosition;
@@ -60,9 +62,11 @@ class Ball : public Entity
     public: 
         Ball(COORD initialPosition, Border& b);
         void collide();
-        void calculatePosition();  
-        void draw() override; 
+        void move();  
+        void draw() override;
+        void erase() override;  
         void calculateDirection();
+
         void setDirX(int _dir); 
         void setDirY(int _dir); 
         void invertDirX(); 
@@ -70,10 +74,14 @@ class Ball : public Entity
         int getDirX(); 
         int getDirY(); 
 
+        void allowMotion(); 
+        void preventMotion(); 
+
 
     private: 
         int dirX; 
-        int dirY; 
+        int dirY;
+        bool motionAllowed;  
 
 
 }; 

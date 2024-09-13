@@ -43,7 +43,8 @@ collisionManager::collisionManager( Border& _borderRef,
                                     ballRef(_ballRef)
 
 {
-
+    pointForLeft = false; 
+    pointForRight = false; 
 }
 
 bool collisionManager::isBallCollidingLeftBorder()
@@ -138,41 +139,51 @@ bool collisionManager::isBallCollidingRightPaddle()
         }
     }
 
-
     return false; 
 }
 
 void collisionManager::process()
 {
-    if (isBallCollidingTopBorder())
+    if (isBallCollidingTopBorder() || isBallCollidingBottomBorder())
     {
         ballRef.invertDirY(); 
     }
-    else if (isBallCollidingBottomBorder())
-    {
-        ballRef.invertDirY(); 
-    }
-    else if(isBallCollidingRightBorder())
-    {
-        ballRef.invertDirX(); 
+
+    if(isBallCollidingRightBorder())
+    {   
+        pointForLeft = true; 
     }
     else if (isBallCollidingLeftBorder())
     {
-        ballRef.invertDirX(); 
+        pointForRight = true; 
     }
-    else if (isBallCollidingLeftPaddle())
+
+    if (isBallCollidingLeftPaddle()|| isBallCollidingRightPaddle())
     {
         ballRef.invertDirX(); 
         ballRef.invertDirY(); 
     }
-    else if (isBallCollidingRightPaddle())
-    {
-        ballRef.invertDirX(); 
-        ballRef.invertDirY();       
-    }
+
 
 }
 
+bool collisionManager::leftPlayerScored()
+{
+    if (true == pointForLeft)
+    {
+        pointForLeft = false; 
+        return true; 
+    }
+}
+
+bool collisionManager::rightPlayerScored()
+{
+    if (true == pointForRight)
+    {
+        pointForRight = false; 
+        return true; 
+    }
+}
 
 
 /***********************************************************

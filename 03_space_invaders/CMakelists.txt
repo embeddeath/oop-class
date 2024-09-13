@@ -30,6 +30,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Src/Border.cpp
     Src/Common.cpp
     Src/CollisionManager.cpp
+    Src/Game.cpp
 )
 
 

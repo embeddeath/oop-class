@@ -9,6 +9,12 @@
 /***********************************************************
     Includes
 ************************************************************/
+#include "Entity.hpp"
+#include "Key.hpp"
+#include "Paddle.hpp"
+#include "Common.hpp"
+#include "Border.hpp"
+#include "CollisionManager.hpp"
 
 /***********************************************************
     Type Definitions
@@ -17,7 +23,15 @@
 /***********************************************************
     Macro Definitions
 ************************************************************/
-#define MAX_NUMBER_OF_ENTITIES  30
+#define LEFTPLAYER_ID   0
+#define RIGHTPLAYER_ID  1
+
+/* Game states */
+#define PAUSE 0 
+#define RUN 1
+#define WAITING_FOR_SERVE 2
+
+
 /***********************************************************
     External Interface Function Declarations
 ************************************************************/
@@ -30,18 +44,59 @@
 /***********************************************************
     Class Declarations and Definitions
 ************************************************************/
+
 class Game
 {
     public: 
         Game(); 
         void run();
-        void addEntityToRenderer(Entity entityToRender);
+        void reset(); 
+        void pause(); 
+        void init(); 
+        void stateMachine();
 
     private: 
-        void render();
+        /* Game entities/border */
+        Border myBorder; 
+        Paddle leftPaddle; 
+        Paddle rightPaddle;
+        Ball myBall;
 
-        /* Temporary fixed size array to store entities*/
-        Entity* entities[MAX_NUMBER_OF_ENTITIES]; 
+        /* User input*/
+        Key keyA, keyD; 
+        Key keyUp, keyDown; 
+        Key leftServe, rightServe; 
+
+        /* Collision Management */
+        collisionManager myCollisionManager; 
+
+        /* Score */
+        int leftPlayerScore; 
+        int rightPlayerScore;
+        int lastPlayerScored;
+        int maxPointsPerGame; 
+
+        /* Game Flow*/
+        int gameState;
+        bool resetHandlingPending;
+        bool serveAllowed;   
+
+        /* Timing */
+        unsigned long currentTick, startTick; 
+        bool hasTickElapsed(); 
+
+        void render();
+        void update();
+        void processInput();
+        
+        /* Game flow */
+
+        int pauseState();
+        int runState();
+        int waitingForSaveState(); 
+        void printScore(); 
+
+         
 }; 
 /***********************************************************
     Function Definitions

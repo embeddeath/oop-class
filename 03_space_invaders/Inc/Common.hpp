@@ -30,6 +30,8 @@
 
 #define PADDLE_X_OFFSET 3
 #define PADDLE_Y_START_LOCATION BORDER_HEIGHT/2
+
+#define PADDLE_LENGTH 5
 /***********************************************************
     External Interface Function Declarations
 ************************************************************/
@@ -49,3 +51,4 @@
 ************************************************************/
 extern void gotoxy(COORD coord); 
 extern void printDebugData(std::string, COORD printLocation); 
+extern void hideCursor(); 

@@ -95,7 +95,10 @@ int Paddle::getLength()
 }
 
 
-
+void Paddle::erase()
+{
+    
+}
 
 
 

@@ -39,7 +39,8 @@ class Paddle : public Entity
         Paddle(COORD COORD, Border& b, int length); 
         void moveUp();
         void moveDown(); 
-        void draw() override; 
+        void draw() override;
+        void erase() override;  
         int getLength(); 
 
     private: 
