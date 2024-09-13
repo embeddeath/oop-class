@@ -34,9 +34,10 @@
 
 
 
-Entity::Entity(COORD initialPosition, Square screenBounds)
+Entity::Entity(COORD initialPosition, Border myBorder)
 {
-
+    currentPosition = initialPosition;
+    previousPosition = initialPosition;
 
 }
 
@@ -51,7 +52,7 @@ COORD Entity::getPreviousPosition()
 }
 
 
-Ball::Ball(COORD initialPosition, Square screenBounds) : Entity(initialPosition, screenBounds)
+Ball::Ball(COORD initialPosition, Border myBorder) : Entity(initialPosition, myBorder)
 {
     
 }

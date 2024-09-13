@@ -31,7 +31,7 @@
     Class Declarations and Definitions
 ************************************************************/
 
-Paddle::Paddle(COORD COORD, Border border, int length) : Entity(COORD, screenBounds)
+Paddle::Paddle(COORD COORD, Border myBorder, int length) : Entity(COORD, myBorder)
 {
     this->length = length; 
 }

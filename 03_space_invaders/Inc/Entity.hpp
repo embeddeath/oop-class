@@ -11,7 +11,7 @@
 ************************************************************/
 #include <iostream>
 #include "Common.hpp"
-
+#include "Border.hpp"
 /***********************************************************
     Type Definitions
 ************************************************************/
@@ -41,7 +41,7 @@ typedef struct Square
 class Entity 
 {
     public:
-        Entity(COORD initialPosition, Square screenBounds); 
+        Entity(COORD initialPosition, Border myBorder); 
         COORD getCurrentPosition();
         COORD getPreviousPosition(); 
         virtual void draw() = 0; /* Each derived class will have its own implementation of the draw method*/
@@ -68,7 +68,7 @@ enum class Direction
 class Ball : public Entity
 {
     public: 
-        Ball(COORD initialPosition, Square screenBounds);
+        Ball(COORD initialPosition, Border myBorder);
         void collide();
         void calculatePosition();  
         void draw() override; 

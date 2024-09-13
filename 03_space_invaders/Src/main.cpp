@@ -12,14 +12,19 @@
 #define BORDER_LENGTH       100
 #define BORDER_HEIGHT       30
 
+#define PADDLE_X_OFFSET 3
+#define PADDLE_Y_START_LOCATION BORDER_HEIGHT/2
+
 int main()
 {   
 
     /* Initialize Border*/
     Border myBorder({BORDER_ORIGIN_X, BORDER_ORIGIN_Y}, BORDER_LENGTH, BORDER_HEIGHT); 
+    //Paddle myPaddle({2, 2}, myBorder, 3); 
+    //Paddle enemyPaddle({97, 2}, myBorder, 3); 
 
-    Paddle myPaddle({2, 2}, myBorder, 3); 
-    Paddle enemyPaddle({97, 2}, myBorder, 3); 
+    Paddle leftPaddle({BORDER_ORIGIN_X + PADDLE_X_OFFSET , PADDLE_Y_START_LOCATION}, myBorder, 3); 
+    Paddle rightPaddle({BORDER_LENGTH - PADDLE_X_OFFSET, PADDLE_Y_START_LOCATION}, myBorder, 3); 
 
     Key keyA('A'), keyD('D'); 
     Key keyUp(VK_UP), keyDown(VK_DOWN); 
@@ -36,25 +41,25 @@ int main()
         /* Capture user input */
         if (keyA.detectRisingEdge())
         {
-            myPaddle.moveUp(); 
+            leftPaddle.moveUp(); 
         }
         if (keyD.detectRisingEdge())
         {
-            myPaddle.moveDown(); 
+            leftPaddle.moveDown(); 
         }
 
         /* Capture user input */
         if (keyUp.detectRisingEdge())
         {
-            enemyPaddle.moveUp(); 
+            rightPaddle.moveUp(); 
         }
         if (keyDown.detectRisingEdge())
         {
-            enemyPaddle.moveDown(); 
+            rightPaddle.moveDown(); 
         }
 
-        // myPaddle.draw();
-        // enemyPaddle.draw(); 
+        leftPaddle.draw();
+        rightPaddle.draw(); 
 
 
         //system("cls"); 
