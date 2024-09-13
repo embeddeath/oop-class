@@ -4,16 +4,9 @@
 #include "Border.hpp"
 #include "Paddle.hpp"
 #include "key.hpp"
+#include "Common.hpp"
 
-#define FRAMES_PER_SECOND 30
 
-#define BORDER_ORIGIN_X     2
-#define BORDER_ORIGIN_Y     2
-#define BORDER_LENGTH       100
-#define BORDER_HEIGHT       30
-
-#define PADDLE_X_OFFSET 3
-#define PADDLE_Y_START_LOCATION BORDER_HEIGHT/2
 
 int main()
 {   
@@ -31,31 +24,50 @@ int main()
 
 
     system("cls"); 
-
     
-
     myBorder.draw(); 
 
+    
+    
     while (1)
     {
         /* Capture user input */
         if (keyA.detectRisingEdge())
         {
-            leftPaddle.moveUp(); 
+            leftPaddle.moveUp();
+            gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT + 2}); 
+            std::cout<< "                                                              ";
+            gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT + 2}); 
+            std::cout<< "BorderLowLimit = " << myBorder.getLowLimit() << " LeftPaddleCurrentPositionY = " << leftPaddle.getCurrentPosition().Y << std::endl;
         }
         if (keyD.detectRisingEdge())
         {
             leftPaddle.moveDown(); 
+
+            gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT + 2}); 
+            std::cout<< "                                                              ";
+            gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT + 2}); 
+            std::cout<< "BorderLowLimit = " << myBorder.getLowLimit() << " LeftPaddleCurrentPositionY = " << leftPaddle.getCurrentPosition().Y << std::endl; 
+
+  
         }
 
         /* Capture user input */
         if (keyUp.detectRisingEdge())
         {
             rightPaddle.moveUp(); 
+            gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT +3}); 
+            std::cout<< "                                                              ";
+            gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT + 3}); 
+            std::cout<< "BorderLowLimit = " << myBorder.getLowLimit() << " RightPaddleCurrentPositionY = " << rightPaddle.getCurrentPosition().Y << std::endl; 
         }
         if (keyDown.detectRisingEdge())
         {
             rightPaddle.moveDown(); 
+            gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT +3}); 
+            std::cout<< "                                                              ";
+            gotoxy( {BORDER_ORIGIN_X, BORDER_ORIGIN_Y + BORDER_HEIGHT + 3}); 
+            std::cout<< "BorderLowLimit = " << myBorder.getLowLimit() << " RightPaddleCurrentPositionY = " << rightPaddle.getCurrentPosition().Y << std::endl; 
         }
 
         leftPaddle.draw();

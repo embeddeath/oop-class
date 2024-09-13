@@ -42,3 +42,10 @@ void gotoxy(COORD coord) {
     // Get the console handle (STD_OUTPUT_HANDLE is the default console)
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
+
+
+void printDebugData(std::string string, COORD printLocation)
+{
+    gotoxy(printLocation);
+    std::cout << string << std::endl; 
+}

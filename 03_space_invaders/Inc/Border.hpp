@@ -37,6 +37,8 @@ class Border
     public: 
         Border(COORD origin, int length, int height); 
         void draw();
+        int getUpLimit(); 
+        int getLowLimit(); 
     private:
         int length; 
         int height; 

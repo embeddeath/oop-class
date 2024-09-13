@@ -38,16 +38,25 @@ Paddle::Paddle(COORD COORD, Border& b, int length) : Entity(COORD, b)
 
 void Paddle::moveUp()
 {
-    previousPosition.Y = currentPosition.Y; 
-    currentPosition.Y--;
-    renderPendingFlag = true; 
+
+    if(currentPosition.Y - 1 > borderRef.getUpLimit())
+    {
+        previousPosition.Y = currentPosition.Y; 
+        currentPosition.Y--;
+        renderPendingFlag = true; 
+    }
+
 }
 
 void Paddle::moveDown()
 {
-    previousPosition.Y = currentPosition.Y; 
-    currentPosition.Y++;
-    renderPendingFlag = true;  
+    if (currentPosition.Y + 1 + length < borderRef.getLowLimit() )
+    {
+        previousPosition.Y = currentPosition.Y; 
+        currentPosition.Y++;
+        renderPendingFlag = true;  
+    }
+
 }
 
 void Paddle::draw() 

@@ -101,8 +101,15 @@ void Border::draw()
     drawHorizontalLine(lowerLeftCorner, lowerRightCorner); 
 }
 
+int Border::getLowLimit()
+{
+    return lowLimit; 
+}
 
-
+int Border::getUpLimit()
+{
+    return upLimit; 
+}
 
 
 
