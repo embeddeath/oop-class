@@ -68,13 +68,34 @@ void Ball::collide()
 void Ball::calculatePosition()
 {
     /* Logic to calculate COORD*/
-    currentPosition.X = currentPosition.X; 
-    currentPosition.Y = currentPosition.Y; 
+    if(currentPosition.Y - 1 == borderRef.getUpLimit())
+    {
+        direction = 0; 
+    }
+
+    if(currentPosition.Y + 1 == borderRef.getLowLimit())
+    {
+        direction = 1; 
+    }
+
+    previousPosition.Y = currentPosition.Y;
+    
+    if (direction == 0)
+    {
+        currentPosition.Y++; 
+    }
+    else
+    {
+        currentPosition.Y--; 
+    }
 }
 
 void Ball::draw()
 {
-
+    gotoxy(previousPosition);
+    std::cout<<' ';
+    gotoxy(currentPosition);
+    std::cout<<'0';
 }
 
 
