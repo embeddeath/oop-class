@@ -20,13 +20,13 @@
 /***********************************************************
     Macro Definitions
 ************************************************************/
-#define FRAMES_PER_SECOND 30
+#define FRAMES_PER_SECOND 60
 #define TICK_FREQUENCY 1000/FRAMES_PER_SECOND
 
 #define BORDER_ORIGIN_X     2
 #define BORDER_ORIGIN_Y     2
-#define BORDER_LENGTH       100
-#define BORDER_HEIGHT       30
+#define BORDER_LENGTH       130
+#define BORDER_HEIGHT       50
 
 #define PADDLE_X_OFFSET 3
 #define PADDLE_Y_START_LOCATION BORDER_HEIGHT/2

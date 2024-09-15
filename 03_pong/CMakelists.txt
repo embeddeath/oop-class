@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 
 # Configure Project
-project( 03_space_invaders
-        DESCRIPTION "Console based space invaders game."
+project( 03_pong
+        DESCRIPTION "Console based pong game."
         LANGUAGES CXX 
 )
 
